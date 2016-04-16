@@ -19,7 +19,7 @@ public abstract class DaggerActivity<D extends ActivityDelegate> extends AppComp
 
     public abstract D createDelegate();
 
-    // Delegated activity events
+    // Proxy-pass activity events to delegate
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -39,7 +39,7 @@ public abstract class DaggerActivity<D extends ActivityDelegate> extends AppComp
     // more...
 
     /**
-     * Access methods in Activity from ActivityDelegate
+     * Access methods (public, protected) in Activity from ActivityDelegate
      *
      * (This class should contains a full set of methods in an Activity)
      */

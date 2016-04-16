@@ -12,6 +12,13 @@ import dagger.Module;
 import dagger.Provides;
 import moe.banana.dagger2example.ioc.DaggerActivity;
 
+/**
+ * Android's Activity
+ *
+ * It's in charge of two things:
+ * - Work as a @Module to provide dependencies (e.g. Views)
+ * - Work as a `Container` or `Driver` to create a @Component with dependency, and take charge of it.
+ */
 @Module(includes = Application.class)
 public class MainActivity extends DaggerActivity<MainActivityDelegate> {
 
@@ -24,6 +31,8 @@ public class MainActivity extends DaggerActivity<MainActivityDelegate> {
         // Make sure that all dependencies can be resolved correctly before calling this method.
         super.performDelegateCreate(savedInstanceState);
     }
+
+    // provide view as dependencies
 
     @Provides
     @Named("drawer")
@@ -49,6 +58,12 @@ public class MainActivity extends DaggerActivity<MainActivityDelegate> {
         return (FloatingActionButton) findViewById(R.id.fab);
     }
 
+    // You can provide more Activity related dependencies
+    // but make sure that these dependencies can either be accessed by the time you call `performDelegateCreate`
+    // or it's declared as a lazy dependency.
+
+    // Provide more dependencies...
+
     @Override
     public MainActivityDelegate createDelegate() {
         return DaggerMainActivityComponent.builder()
@@ -56,7 +71,13 @@ public class MainActivity extends DaggerActivity<MainActivityDelegate> {
                 .mainActivity(this).build().delegate();
     }
 
-    // Dagger2 does not allow an overridden method annotated `@Provides`
+    /**
+     * Provide delegate object with an InvocationAgent
+     *
+     * (This is required, or the component could not be created)
+     * Since dagger2 does not allow an overridden method annotated `@Provides`,
+     * we have no choice but to declare it here.
+     */
     @Provides
     public DaggerActivity.InvocationAgent provideInvocationAgent() {
         return daggerProvideInvocationAgent();

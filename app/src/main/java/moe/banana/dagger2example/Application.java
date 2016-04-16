@@ -18,4 +18,7 @@ public class Application extends android.app.Application {
         return mSharedPreferences;
     }
 
+    // Provide any other Application scoped singleton objects
+    // For example, HTTP client, Event bus and so on.
+
 }
