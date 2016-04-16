@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -66,6 +67,20 @@ public class MainActivityDelegate extends ActivityDelegate
         toggle.syncState();
 
         mNavigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        Toast.makeText(getActivity(), "Activity started.", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        Toast.makeText(getActivity(), "Activity stopped.", Toast.LENGTH_SHORT).show();
     }
 
     @Override

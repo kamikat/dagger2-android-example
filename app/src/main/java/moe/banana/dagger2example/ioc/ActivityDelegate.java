@@ -24,6 +24,38 @@ public class ActivityDelegate {
         mInvocationAgent.onCreate(savedInstanceState);
     }
 
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        mInvocationAgent.onRestoreInstanceState(savedInstanceState);
+    }
+
+    protected void onStart() {
+        mInvocationAgent.onStart();
+    }
+
+    protected void onResume() {
+        mInvocationAgent.onResume();
+    }
+
+    protected void onSaveInstanceState(Bundle outState) {
+        mInvocationAgent.onSaveInstanceState(outState);
+    }
+
+    protected void onPause() {
+        mInvocationAgent.onPause();
+    }
+
+    protected void onStop() {
+        mInvocationAgent.onStop();
+    }
+
+    protected void onRestart() {
+        mInvocationAgent.onRestart();
+    }
+
+    protected void onDestroy() {
+        mInvocationAgent.onDestroy();
+    }
+
     public void onBackPressed() {
         mInvocationAgent.onBackPressed();
     }
