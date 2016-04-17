@@ -71,16 +71,4 @@ public class MainActivity extends DaggerActivity<MainActivityDelegate> {
                 .mainActivity(this).build().delegate();
     }
 
-    /**
-     * Provide delegate object with an InvocationAgent
-     *
-     * (This is required, or the component could not be created)
-     * Since dagger2 does not allow an overridden method annotated `@Provides`,
-     * we have no choice but to declare it here.
-     */
-    @Provides
-    public DaggerActivity.InvocationAgent provideInvocationAgent() {
-        return daggerProvideInvocationAgent();
-    }
-
 }

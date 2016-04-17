@@ -16,7 +16,13 @@ public class ActivityDelegate {
 
     public DaggerActivity.InvocationAgent mInvocationAgent;
 
-    public ActivityDelegate(DaggerActivity.InvocationAgent agent) {
+    public ActivityDelegate() { }
+
+    public ActivityDelegate(DaggerActivity.InvocationAgent invocationAgent) {
+        setInvocationAgent(invocationAgent);
+    }
+
+    public void setInvocationAgent(DaggerActivity.InvocationAgent agent) {
         mInvocationAgent = agent;
     }
 

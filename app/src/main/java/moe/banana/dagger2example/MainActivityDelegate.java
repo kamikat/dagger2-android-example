@@ -18,7 +18,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import moe.banana.dagger2example.ioc.ActivityDelegate;
-import moe.banana.dagger2example.ioc.DaggerActivity;
 
 public class MainActivityDelegate extends ActivityDelegate
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -43,9 +42,7 @@ public class MainActivityDelegate extends ActivityDelegate
     protected SharedPreferences mSharedPreferences;
 
     @Inject
-    public MainActivityDelegate(DaggerActivity.InvocationAgent agent) {
-        super(agent);
-    }
+    public MainActivityDelegate() { }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

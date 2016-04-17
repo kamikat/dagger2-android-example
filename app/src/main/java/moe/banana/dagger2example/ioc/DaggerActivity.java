@@ -12,10 +12,11 @@ import android.view.MenuItem;
 @SuppressLint("MissingSuperCall")
 public abstract class DaggerActivity<D extends ActivityDelegate> extends AppCompatActivity {
 
-    private D mActivityDelegate;
+    private ActivityDelegate mActivityDelegate = new ActivityDelegate(new InvocationAgent());
 
     protected final void performDelegateCreate(@Nullable Bundle savedInstanceState) {
         mActivityDelegate = createDelegate();
+        mActivityDelegate.setInvocationAgent(new InvocationAgent());
         mActivityDelegate.onCreate(savedInstanceState);
     }
 
